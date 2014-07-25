@@ -27,7 +27,8 @@ public class DroolsTest {
     public void setup() {
 		// Construct rule base from pre-built rules
         KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        kbuilder.add(ResourceFactory.newClassPathResource("Sample.drl"), ResourceType.DRL);
+        //kbuilder.add(ResourceFactory.newClassPathResource("Sample.drl"), ResourceType.DRL);
+        kbuilder.add(ResourceFactory.newFileResource("src/main/rules/Sample.drl"), ResourceType.DRL);
         KnowledgeBuilderErrors errors = kbuilder.getErrors();
         if (errors.size() > 0) {
             for (KnowledgeBuilderError error: errors) {
@@ -49,13 +50,13 @@ public class DroolsTest {
         message.setMessage("Hello World");
         message.setStatus(Message.HELLO);
         
-        Message m2 = new Message();
-        m2.setMessage("Goodbye cruel world");
-        m2.setStatus(Message.GOODBYE);
+        //Message m2 = new Message();
+        //m2.setMessage("Goodbye cruel world");
+        //m2.setStatus(Message.GOODBYE);
         
         // Insert FACTS into the engine
         ksession.insert(message);
-        ksession.insert(message);
+        //ksession.insert(m2);
         
         // Fire the rules
         ksession.fireAllRules();

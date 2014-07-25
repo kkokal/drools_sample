@@ -24,7 +24,6 @@ rule "a message exists"
 		m:Message()
 	then
 		System.out.println( "I found a message with a message of " + m.getMessage() );
-		update(m);
 end
 
 		
